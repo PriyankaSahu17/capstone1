@@ -1,0 +1,82 @@
+/* Container spacing */
+.accordion-wrapper {
+  max-width: 800px;        /* Limit width */
+  margin: 0 auto;          /* Center horizontally */
+  padding: 0 16px;         /* Some side padding for small screens */
+}
+
+.accordion details {
+  color: #000;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  margin: 0;
+}
+
+/* Remove extra margin between details */
+.accordion details + details {
+  margin-top: 0;
+}
+
+/* Summary styling */
+.accordion details summary {
+  position: relative;
+  padding: 16px 48px 16px 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+  margin: 0;
+  display: block;       /* Ensure it takes full width */
+  width: 100%;          /* Force it to fill container */
+}
+
+
+/* Remove default marker */
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom plus sign */
+.accordion details summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  line-height: 1;
+  transition: transform 0.2s, content 0.2s;
+}
+
+/* Change to minus when open */
+.accordion details[open] summary::after {
+  content: '−'; /* minus sign */
+}
+
+/* Content body padding */
+.accordion details .accordion-item-body {
+  padding: 0 0 16px 0;
+}
+
+/* Paragraph spacing inside content */
+.accordion details .accordion-item-body p {
+  margin: 0 0 0.8em;
+}
+
+/* Remove background and borders on open */
+.accordion details[open] summary {
+  background: transparent;
+}
+
+/* Keep divider line under open item */
+.accordion details[open] {
+  border-bottom: 1px solid #e5e5e5;
+}

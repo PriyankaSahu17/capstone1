@@ -1,0 +1,104 @@
+/* Wrapper centers the banner content and sets a max-width */
+.banner-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #f4f4f4; /* Light gray background like WKND */
+  padding: 0; /* Remove any extra padding */
+  margin: 0;
+}
+
+/* Banner main container */
+.banner {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #fff; /* White background */
+}
+
+/* Inner flex layout for image + text */
+.banner-wrapper-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 300px; /* WKND banner height */
+}
+
+/* Image side */
+.banner-image {
+  flex: 0 0 60%;
+  position: relative;
+}
+
+.banner-image picture,
+.banner-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text side */
+.banner-text {
+  flex: 0 0 40%;
+  box-sizing: border-box;
+  background-color: #f4f4f4; /* Light gray background */
+  color: #000; /* Black text */
+  padding: 30px 20px; /* Generous padding like WKND */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Headings */
+.banner-text h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 12px;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.banner-text h2 {
+  font-size: 2.25rem; /* Larger heading */
+  font-weight: 400;
+  margin: 0 0 24px;
+}
+
+/* Paragraphs */
+.banner-text p {
+  font-size: 1rem;
+  margin: 0 0 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Button */
+.banner-text .button-container {
+  margin-top: 24px;
+}
+
+.banner-text .button {
+  background-color: #ffe000; /* WKND bright yellow */
+  color: #000;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+/* Responsive stacking for mobile */
+@media (max-width: 768px) {
+  .banner-wrapper-inner {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .banner-image,
+  .banner-text {
+    flex: 0 0 100%;
+  }
+  .banner-text {
+    padding: 30px 20px;
+  }
+}

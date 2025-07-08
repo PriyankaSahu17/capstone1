@@ -1,20 +1,123 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
 
 footer .footer > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: auto;
   max-width: 1200px;
   padding: 40px 24px 24px;
+  gap: 32px;
 }
 
-footer .footer p {
+footer .footer .section {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+footer .footer .section .default-content-wrapper p,
+footer .footer .section .default-content-wrapper ul {
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer .footer a:hover {
+  text-decoration: underline;
+}
+
+/* Logo section */
+footer .footer .section:nth-child(1) .default-content-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+footer .footer .icon-wknd-logo-light img {
+  width: 140px;
+  height: auto;
+  display: block;
+}
+
+/* Nav links section */
+footer .footer .section:nth-child(2) .default-content-wrapper ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+/* Follow Us section */
+footer .footer .section:nth-child(3) .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+footer .footer .section:nth-child(3) .default-content-wrapper p {
+  font-weight: 600;
   margin: 0;
 }
 
-@media (width >= 900px) {
+footer .footer .section:nth-child(3) .default-content-wrapper p span.icon {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+footer .footer .section:nth-child(3) .default-content-wrapper p span.icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Copyright */
+footer .footer .section:nth-child(4) {
+  flex: 1 1 100%;
+}
+
+footer .footer .section:nth-child(4) .default-content-wrapper {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #aaa;
+}
+
+footer .footer .section:nth-child(4) .default-content-wrapper p {
+  margin: 0 0 12px 0;
+}
+
+footer .footer .section:nth-child(4) .default-content-wrapper a {
+  color: #ddd;
+  text-decoration: underline;
+}
+
+footer .footer .section:nth-child(4) .default-content-wrapper a:hover {
+  color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
   footer .footer > div {
-    padding: 40px 32px 24px;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  footer .footer .section {
+    width: 100%;
+  }
+
+  footer .footer .section:nth-child(2) .default-content-wrapper ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 }

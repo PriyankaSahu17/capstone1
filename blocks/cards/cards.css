@@ -8,20 +8,188 @@
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  border: 1px solid #ffffff;
+  background-color: white;
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
-
 .cards .cards-card-image {
   line-height: 0;
 }
 
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3.6 / 2.5;
   object-fit: cover;
+}
+.cards .cards-card-body h3 {
+  text-transform: uppercase;
+  margin: 8px 0 8px; /* Adds space under heading */
+}
+.cards .cards-card-body p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines before cutting off */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  max-width: 100%;
+  color: #828181;
+}
+.cards .cards-card-body .button {
+  display: inline-block;
+  background-color: #e0e0e0;   /* light grey background */
+  color: #000;                 /* black text */
+  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0;            /* sharp corners */
+  font-weight: bold;
+  text-transform: uppercase;   /* uppercase text */
+  font-size: 14px;
+}
+/* Container grid */
+
+.cards.about-us ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+  gap: 3rem;
+  justify-content: start; /* Center the row when fewer items */
+  padding: 0;
+  margin: 2rem 0;
+}
+
+/* Remove bullets and default spacing */
+.cards.about-us li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Circle images */
+.cards.about-us .cards-card-image img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Name styling */
+.cards.about-us h3 {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Subtitle styling */
+.cards.about-us h5 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Social links container */
+.cards.about-us .cards-card-body p {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  margin: 0.25rem 0.15rem 0;
+  cursor: pointer;
+  transition: 0.3s ease;
+  min-width: 9;
+}
+
+.cards.about-us .cards-card-body p:hover {
+  background: #333;
+}
+
+.cards.members ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cards.members li {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 30%; /* narrower cards */
+}
+
+/* Grey overlay */
+.cards.members li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(128, 128, 128, 0.1);
+  z-index: 2;
+}
+
+/* Yellow triangle */
+.cards.members li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #ffea00; /* smaller triangle */
+  border-right: 60px solid transparent;
+  z-index: 3;
+}
+
+/* Lock icon */
+.cards.members li .lock-icon {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 4;
+  font-size: 16px; /* smaller lock */
+  color: black;
+}
+
+/* Dim image */
+.cards.members .cards-card-image img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0.7);
+}
+
+/* Limit image height if desired */
+.cards.members .cards-card-image {
+  max-height: 180px;
+  max-width: none;
+  overflow: hidden;
+}
+
+/* Smaller text */
+.cards.members .cards-card-body h3 {
+  font-size: 1rem;
+}
+.cards.members .cards-card-body p {
+  font-size: 0.85rem;
+}
+
+/* Smaller button */
+.cards.members .cards-card-body .button {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  opacity: 0.6;
+  pointer-events: none;
 }

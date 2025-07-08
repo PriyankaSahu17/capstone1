@@ -1,0 +1,65 @@
+/* Make the container grid */
+body.faq main .accordion-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Left larger than right */
+  gap: 2rem;
+  align-items: start;
+  max-width: 1264px;
+  margin: 0 auto;
+
+}
+
+/* LEFT column: all children except the last one */
+body.faq main .accordion-container > *:not(:last-child) {
+  grid-column: 1;
+}
+
+/* RIGHT column: last content wrapper ("Need more help?") */
+body.faq main .accordion-container > *:last-child {
+  grid-row: 1;
+  grid-column: 2;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 0px;
+}
+
+/* OPTIONAL: Style image inside the first content wrapper */
+body.faq main .accordion-container > .default-content-wrapper:first-of-type picture img {
+  width: 100%;
+  border-radius: 0px;
+}
+
+/* Style "Need more help?" heading */
+body.faq main .accordion-container > *:last-child h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Style "Need more help?" text */
+body.faq main .accordion-container > *:last-child p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+/* Style links */
+body.faq main .accordion-container > *:last-child a {
+  color: #0077cc;
+  text-decoration: none;
+}
+body.faq main .accordion-container > *:last-child a:hover {
+  text-decoration: underline;
+}
+
+
+/* Responsive stack */
+@media (max-width: 768px) {
+  body.faq main .accordion-container {
+    grid-template-columns: 1fr;
+  }
+  body.faq main .accordion-container > *:not(:last-child),
+  body.faq main .accordion-container > *:last-child {
+    grid-column: 1;
+  }
+}
