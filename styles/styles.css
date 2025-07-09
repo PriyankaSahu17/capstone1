@@ -16,8 +16,8 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: #ffeb00;
+  --link-hover-color: #ffeb00;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -195,24 +195,24 @@ a.button:any-link,
 button {
   box-sizing: border-box;
   display: inline-block;
-  max-width: 100%;
-  margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  background-color: #ffeb00;
+  color: #000;
+  text-decoration: none;
+  padding: 12px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 0; /* optional: flat buttons */
   font-family: var(--body-font-family);
-  font-style: normal;
-  font-weight: 500;
   line-height: 1.25;
   text-align: center;
-  text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 
 a.button:hover,
 a.button:focus,

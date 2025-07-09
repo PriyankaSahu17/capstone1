@@ -180,10 +180,10 @@
 
 /* Smaller text */
 .cards.members .cards-card-body h3 {
-  font-size: 1rem;
+  font-size: 0.85rem;
 }
 .cards.members .cards-card-body p {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 
 /* Smaller button */

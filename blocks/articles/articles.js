@@ -1,54 +1,69 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-  // Check if the path starts with 'magazine/' and is not exactly 'magazine'
-  const path = window.location.pathname.replace(/^\/|\/$/g, ''); // Remove leading/trailing slashes
-  if (!path.startsWith('magazine/') || path === 'magazine') return;
-
-  // Fetch metadata
-  let indexData = [];
   try {
-    const res = await fetch('/query-index.json');
-    if (res.ok) {
-      const json = await res.json();
-      indexData = json.data || [];
-    } else {
-      console.warn('Failed to fetch query-index.json');
+    const response = await fetch('/query-index.json');
+    if (!response.ok) {
+      console.warn('Unable to load article metadata.');
+      return;
     }
-  } catch (e) {
-    console.warn('Error fetching metadata:', e);
+
+    const { data = [] } = await response.json();
+    const articles = data.filter(item => item.path?.startsWith('/magazine/'));
+
+    if (!articles.length) {
+      block.innerHTML = '<p>No magazine articles available.</p>';
+      return;
+    }
+
+    const ul = document.createElement('ul');
+
+    for (const article of articles) {
+      const li = document.createElement('li');
+
+      // Image container
+      if (article.image) {
+        const imageDiv = document.createElement('div');
+        imageDiv.className = 'articles-card-image';
+
+        const picture = createOptimizedPicture(article.image, article.title || '', false, [{ width: '750' }]);
+        imageDiv.appendChild(picture);
+        li.appendChild(imageDiv);
+      }
+
+      // Content container
+      const contentDiv = document.createElement('div');
+      contentDiv.className = 'articles-card-body';
+
+      if (article.title) {
+        const h3 = document.createElement('h3');
+        h3.textContent = article.title;
+        contentDiv.appendChild(h3);
+      }
+
+      if (article.description) {
+        const p = document.createElement('p');
+        p.textContent = article.description;
+        contentDiv.appendChild(p);
+      }
+
+      li.appendChild(contentDiv);
+
+      // Wrap in link if path exists
+      if (article.path) {
+        const link = document.createElement('a');
+        link.href = article.path;
+        while (li.firstChild) link.appendChild(li.firstChild);
+        li.appendChild(link);
+      }
+
+      ul.appendChild(li);
+    }
+
+    block.textContent = '';
+    block.appendChild(ul);
+
+  } catch (error) {
+    console.error('Error displaying magazine articles:', error);
   }
-
-  // Filter relevant entries based on path
-  const filteredData = indexData.filter((entry) =>
-    entry.path && entry.path.startsWith(`/${path}`)
-  );
-
-  // Generate UI
-  const ul = document.createElement('ul');
-  filteredData.forEach((item) => {
-    const li = document.createElement('li');
-
-    // Create image block
-    const imgBlock = document.createElement('div');
-    imgBlock.className = 'articles-card-image';
-    const pic = createOptimizedPicture(item.image, item.title, false, [{ width: '750' }]);
-    imgBlock.append(pic);
-
-    // Create content block
-    const contentBlock = document.createElement('div');
-    contentBlock.className = 'articles-card-body';
-    const title = document.createElement('h3');
-    title.textContent = item.title;
-    const desc = document.createElement('p');
-    desc.textContent = item.description || '';
-    contentBlock.append(title, desc);
-
-    li.append(imgBlock, contentBlock);
-    ul.append(li);
-  });
-
-  // Replace the block's content
-  block.textContent = '';
-  block.append(ul);
 }
