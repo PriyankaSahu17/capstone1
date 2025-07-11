@@ -1,3 +1,6 @@
+
+/* Container grid */
+/* Ensure list styling is reset */
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -7,30 +10,55 @@
   grid-gap: 24px;
 }
 
+/* Card container */
 .cards > ul > li {
   border: 1px solid #ffffff;
   background-color: white;
 }
 
-.cards .cards-card-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  box-sizing: border-box;
+/* Remove default link styling */
+.cards a {
+  text-decoration: none;
+  color: inherit; /* Inherit from h3 or p styles */
 }
+
+/* Ensure no underline on hover/focus/active */
+.cards a:hover,
+.cards a:focus,
+.cards a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Fix image styling */
 .cards .cards-card-image {
   line-height: 0;
 }
 
+/* Image sizing */
 .cards > ul > li img {
   width: 100%;
   aspect-ratio: 3.6 / 2.5;
   object-fit: cover;
 }
+
+/* Article content styling */
+.cards .cards-card-body {
+  margin: 0;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Title style */
 .cards .cards-card-body h3 {
   text-transform: uppercase;
-  margin: 8px 0 8px; /* Adds space under heading */
+  margin: 8px 0;
+  font-size: 16px;          /* ⬅️ Smaller font */
+  color: #000;              /* ⬅️ Make title black */
 }
+
+/* Description style */
 .cards .cards-card-body p {
   display: -webkit-box;
   -webkit-line-clamp: 1; /* Number of lines before cutting off */
@@ -39,21 +67,23 @@
   text-overflow: ellipsis;
   text-transform: uppercase;
   max-width: 100%;
-  color: #828181;
+  color: #828181;         /* ⬅️ Grey color */
+  font-size: 14px;        /* ⬅️ Smaller font */
 }
+
+/* Optional: style buttons consistently if used */
 .cards .cards-card-body .button {
   display: inline-block;
-  background-color: #e0e0e0;   /* light grey background */
-  color: #000;                 /* black text */
+  background-color: #e0e0e0;
+  color: #000;
   text-decoration: none;
   padding: 10px 20px;
   border: none;
-  border-radius: 0;            /* sharp corners */
+  border-radius: 0;
   font-weight: bold;
-  text-transform: uppercase;   /* uppercase text */
+  text-transform: uppercase;
   font-size: 14px;
 }
-/* Container grid */
 
 .cards.about-us ul {
   display: grid;
@@ -126,7 +156,7 @@
   flex-direction: column-reverse;
   position: relative;
   overflow: hidden;
-  flex: 0 0 30%; /* narrower cards */
+  flex: 0 0 100%; /* narrower cards */
 }
 
 /* Grey overlay */
@@ -193,3 +223,13 @@
   opacity: 0.6;
   pointer-events: none;
 }
+@media (min-width: 600px) {
+  .cards.members li {
+    flex: 0 0 30%; /* Desktop: 3 per row */
+  }
+
+  .cards.members ul {
+    gap: 20px; /* Wider spacing on desktop */
+  }
+}
+

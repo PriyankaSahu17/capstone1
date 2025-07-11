@@ -22,7 +22,7 @@ header nav {
   justify-content: space-between;
   align-items: center;
   gap: 0 32px;
-  max-width: 1264px;
+  max-width: 1200px;
   padding: 0 32px;
 }
 
@@ -40,7 +40,7 @@ header nav[aria-expanded='true'] {
     display: flex;
     justify-content: flex-start;  /* IMPORTANT: align children in a row */
     gap: 0 32px;
-    max-width: 1264px;
+    max-width: 1200px;
     padding: 0 32px;
   }
 
@@ -283,6 +283,7 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+  padding-top: 20px;
 }
 
 
@@ -291,7 +292,7 @@ header nav .nav-tools {
     display: flex;
     justify-content: flex-start; /* lay out items in order */
     gap: 0 32px;
-    max-width: 1264px;
+    max-width: 1200px;
     padding: 0 32px;
   }
 
@@ -344,4 +345,53 @@ header nav a:any-link::before {
   transition: opacity 0.2s ease;
   z-index: -1;
   pointer-events: none; /* 👈 IMPORTANT */
+}
+@media (max-width: 899px) {
+  /* Base mobile slide-in styles for nav-sections */
+  nav .nav-sections {
+    position: fixed;
+    top: 0;
+    left: -60%;
+    width: 60%;
+    height: 120dvh;
+    background-color: #000000;
+    z-index: 1000;
+    padding: 24px;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    display: block;
+    visibility: visible;
+    color: #fff;
+  }
+
+  /* When hamburger is clicked */
+  nav[aria-expanded="true"] .nav-sections {
+    left: 0;
+  }
+
+  /* Don't show overlay — just show 25% of original page */
+  nav::after {
+    content: none;
+  }
+
+  /* Hide logo and tools on mobile when nav is expanded */
+  nav[aria-expanded="true"] .nav-brand,
+  nav[aria-expanded="true"] .nav-tools {
+    display: none;
+  }
+  nav[aria-expanded="true"] {
+    position: fixed;
+    width: 60%; /* limit nav itself */
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  }
+
+  /* Allow body to remain scrollable and visible on the right */
+  body {
+    overflow-y: auto !important;
+  }
 }

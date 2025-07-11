@@ -286,7 +286,6 @@ body.faq main .accordion-container {
   grid-template-columns: 2fr 1fr; /* Left larger than right */
   gap: 2rem;
   align-items: start;
-  max-width: 1264px;
   margin: 0 auto;
 
 }
@@ -294,6 +293,7 @@ body.faq main .accordion-container {
 /* LEFT column: all children except the last one */
 body.faq main .accordion-container > *:not(:last-child) {
   grid-column: 1;
+  width: 100%;;
 }
 
 /* RIGHT column: last content wrapper ("Need more help?") */
@@ -336,7 +336,7 @@ body.faq main .accordion-container > *:last-child a:hover {
 
 
 /* Responsive stack */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   body.faq main .accordion-container {
     grid-template-columns: 1fr;
   }
@@ -344,4 +344,20 @@ body.faq main .accordion-container > *:last-child a:hover {
   body.faq main .accordion-container > *:last-child {
     grid-column: 1;
   }
+
+  body.faq main .accordion-container > *:last-child {
+    order: 2; /* Push to bottom */
+  }
+
+  body.faq main .accordion-container > *:not(:last-child) {
+    order: 1; /* Appear before */
+  }
+
+  body.faq main .accordion-container {
+    display: flex;
+    flex-direction: column;
+  
+}
+
+  
 }

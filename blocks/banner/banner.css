@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   background: #f4f4f4; /* Light gray background like WKND */
-  padding: 0; /* Remove any extra padding */
+  padding: 0 24px; /* Remove any extra padding */
   margin: 0;
 }
 
@@ -89,7 +89,7 @@
 }
 
 /* Responsive stacking for mobile */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .banner-wrapper-inner {
     flex-direction: column;
     min-height: auto;

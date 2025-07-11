@@ -105,7 +105,7 @@ footer .footer .section:nth-child(4) .default-content-wrapper a:hover {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   footer .footer > div {
     flex-direction: column;
     gap: 24px;

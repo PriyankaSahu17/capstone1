@@ -54,7 +54,7 @@ body.faq main .accordion-container > *:last-child a:hover {
 
 
 /* Responsive stack */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   body.faq main .accordion-container {
     grid-template-columns: 1fr;
   }
